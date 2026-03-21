@@ -40,3 +40,21 @@ chunks = chunk_text(text)
 for i, chunk in enumerate(chunks):
     print(f"\n--- Chunk {i+1} ---\n")
     print(chunk)
+
+from embeddings import create_embeddings
+
+# Create embeddings
+embeddings = create_embeddings(chunks)
+
+print("\nNumber of chunks:", len(chunks))
+print("Embedding shape:", embeddings.shape)
+
+print("\nSample embedding:\n", embeddings[0])
+
+import pickle
+
+# Save chunks and embeddings
+with open("data.pkl", "wb") as f:
+    pickle.dump((chunks, embeddings), f)
+
+print("\nData saved successfully!")
