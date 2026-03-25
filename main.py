@@ -26,14 +26,22 @@ text = clean_text(text)
 
 # -------- STEP 4: CHUNKING --------
 def chunk_text(text, chunk_size=500):
-    chunks = []
+    sentences = re.split(r'(?<=[.!?]) +', text)
     
-    for i in range(0, len(text), chunk_size):
-        chunk = text[i:i+chunk_size]
-        chunks.append(chunk)
+    chunks = []
+    current_chunk = ""
+    
+    for sentence in sentences:
+        if len(current_chunk) + len(sentence) <= chunk_size:
+            current_chunk += " " + sentence
+        else:
+            chunks.append(current_chunk.strip())
+            current_chunk = sentence
+    
+    if current_chunk:
+        chunks.append(current_chunk.strip())
     
     return chunks
-
 chunks = chunk_text(text)
 
 # -------- STEP 5: PRINT CHUNKS --------

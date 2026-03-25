@@ -15,8 +15,10 @@ query = input("Enter your question: ")
 # Search
 results = search(query, model, chunks, embeddings)
 
-print("\nMost relevant results:\n")
+from rag import generate_answer
 
-for i, res in enumerate(results):
-    print(f"\n--- Result {i+1} ---\n")
-    print(res)
+# Generate final answer using AI
+answer = generate_answer(query, results)
+
+print("\nFinal Answer:\n")
+print(answer)
