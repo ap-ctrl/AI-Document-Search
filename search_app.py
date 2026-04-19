@@ -1,6 +1,7 @@
 import pickle
 from search import search
 from sentence_transformers import SentenceTransformer
+from rag import generate_answer
 
 # Load saved data
 with open("data.pkl", "rb") as f:
