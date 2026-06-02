@@ -23,7 +23,8 @@ Answer:
     url = "http://localhost:11434/api/generate"
 
     data = {
-        "model": "phi3:latest",
+        "model": "qwen2.5:1.5b",
+        # "model": "tinyllama",
         "prompt": prompt,
         "stream": False
     }

@@ -25,7 +25,7 @@ def clean_text(text):
 text = clean_text(text)
 
 # -------- STEP 4: CHUNKING --------
-def chunk_text(text, chunk_size=500):
+def chunk_text(text, chunk_size=200):
     sentences = re.split(r'(?<=[.!?]) +', text)
     
     chunks = []

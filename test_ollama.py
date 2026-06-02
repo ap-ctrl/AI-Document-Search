@@ -4,7 +4,8 @@ try:
     response = requests.post(
         "http://localhost:11434/api/generate",
         json={
-            "model": "tinyllama",
+            "model": "qwen2.5:1.5b",
+            #"model": "tinyllama",
             "prompt": "Who are you?",
             "stream": False
         }
