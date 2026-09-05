@@ -1,65 +1,78 @@
-📄 AI Document Chat
+<div align="center">
 
-An AI-powered PDF question-answering application that allows users to upload a PDF and ask questions about its contents.
+# 📄 AI Document Chat
 
-The application uses local AI with Ollama, meaning the AI model runs locally instead of relying on a cloud-based AI API.
+### AI-Powered PDF Question Answering using RAG, OCR, Ollama and Docker
+
+An AI-powered application that allows users to upload PDF documents and ask questions about their content.
+
+[![Python](https://img.shields.io/badge/Python-3.11-blue.svg)]()
+[![Streamlit](https://img.shields.io/badge/Streamlit-Web%20App-red.svg)]()
+[![Docker](https://img.shields.io/badge/Docker-Containerized-blue.svg)]()
+[![Ollama](https://img.shields.io/badge/Ollama-Local%20LLM-black.svg)]()
+[![Qwen](https://img.shields.io/badge/Qwen-2.5%201.5B-purple.svg)]()
+
+</div>
+
+---
+
+## 📌 Overview
+
+**AI Document Chat** is an AI-powered PDF question-answering application that allows users to upload a PDF and ask questions about its contents.
+
+The application uses **local AI with Ollama**, meaning the AI model runs locally instead of relying on a cloud-based AI API.
 
 Users can upload a PDF, process the document, and ask questions through a simple Streamlit chat interface.
 
-🚀 Features
-📄 Upload PDF documents
-🔍 Extract and process text from PDFs
-🧠 Ask questions about the uploaded document
-🤖 Local AI using Ollama
-💬 Chat-style user interface
-🐳 Dockerized application
-🔎 Document retrieval before generating answers
-🔒 No external AI API required
+---
 
+# 🚀 Features
 
-🛠️ Technologies Used
-Frontend
-Streamlit
-Backend
-Python
-AI Model
-Ollama
-Qwen 2.5 1.5B
-PDF Processing
-Python PDF processing libraries
-Tesseract OCR support
-Containerization
-Docker
-Docker Compose
+| Feature              | Description                                                  |
+| -------------------- | ------------------------------------------------------------ |
+| 📄 PDF Upload        | Upload PDF documents directly through the application        |
+| 🔍 Text Extraction   | Extract and process text from PDF files                      |
+| 🧠 Document Q&A      | Ask natural-language questions about uploaded documents      |
+| 🔎 Context Retrieval | Retrieve relevant document content before generating answers |
+| 🤖 Local AI          | Generate answers using Ollama and Qwen 2.5                   |
+| 💬 Chat Interface    | Simple Streamlit-based conversational interface              |
+| 🐳 Docker Support    | Containerized environment for easier setup and deployment    |
+| 🔒 Local Processing  | No external AI API required                                  |
 
-📂 Project Structure
-AI-Document-Search
-│
-├── app.py
-├── main.py
-├── pdf_processor.py
-├── rag.py
-├── search.py
-├── search_app.py
-├── rewrite.py
-│
-├── Dockerfile
-├── docker-compose.yml
-├── requirements.txt
-├── .dockerignore
-├── .gitignore
-│
-├── sample.pdf
-│
-├── data.pkl
-│
-├── test_ollama.py
-└── test_tesseract.py
+---
 
-🧠 How It Works
+# 🛠️ Technology Stack
 
-The application follows a simple Retrieval-Augmented Generation workflow.
+### Frontend
 
+- Streamlit
+
+### Backend
+
+- Python
+
+### AI Model
+
+- Ollama
+- Qwen 2.5 1.5B
+
+### PDF Processing
+
+- Python PDF processing libraries
+- Tesseract OCR support
+
+### Containerization
+
+- Docker
+- Docker Compose
+
+---
+
+# 🧠 How It Works
+
+The application follows a **Retrieval-Augmented Generation (RAG)** workflow.
+
+```text
                 ┌──────────────────┐
                 │   Upload PDF     │
                 └────────┬─────────┘
@@ -98,213 +111,367 @@ The application follows a simple Retrieval-Augmented Generation workflow.
                 │ Display Answer   │
                 │ in Streamlit     │
                 └──────────────────┘
-🐳 Running the Project Using Docker
-Prerequisites
+```
+
+---
+
+# 📂 Project Structure
+
+```text
+AI-Document-Search/
+│
+├── 📄 app.py
+├── 📄 main.py
+├── 📄 pdf_processor.py
+├── 📄 rag.py
+├── 📄 search.py
+├── 📄 search_app.py
+├── 📄 rewrite.py
+│
+├── 🐳 Dockerfile
+├── 🐳 docker-compose.yml
+│
+├── 📦 requirements.txt
+├── ⚙️ .dockerignore
+├── ⚙️ .gitignore
+│
+├── 📄 sample.pdf
+├── 📄 data.pkl
+│
+├── 🧪 test_ollama.py
+└── 🧪 test_tesseract.py
+```
+
+---
+
+# 🐳 Running the Project with Docker
+
+## Prerequisites
 
 Make sure the following are installed:
 
-Docker Desktop
-Docker Compose
+- Docker Desktop
+- Docker Compose
 
-You can verify Docker installation using:
+Verify your installation:
+
+```bash
 docker --version
+```
 
-and:
-
+```bash
 docker compose version
+```
 
-Step 1: Clone the Repository
+---
 
-After uploading the project to GitHub:
+## 1️⃣ Clone the Repository
 
-git clone YOUR_REPOSITORY_URL
+```bash
+git clone https://github.com/ap-ctrl/AI-Document-Search.git
+```
 
-Move into the project folder:
+Move into the project directory:
 
+```bash
 cd AI-Document-Search
+```
 
-Step 2: Build and Start the Application
+---
 
-Run:
+## 2️⃣ Build and Start the Application
+
+```bash
 docker compose up --build
+```
 
 This command will:
 
-Build the Python application container.
-Start the Streamlit application.
-Start the Ollama container.
-Create the required Docker network.
-Create the Ollama data volume.
+- Build the Python application container
+- Start the Streamlit application
+- Start the Ollama container
+- Create the required Docker network
+- Create the Ollama data volume
 
-🤖 Download the AI Model
+---
 
-After the Docker containers are running, check the available Ollama models:
+# 🤖 Download the AI Model
+
+Check available Ollama models:
+
+```bash
 docker exec -it ai-document-chat-ollama ollama list
+```
 
-If the Qwen model is not available, download it using:
+If the model is not available, download it using:
+
+```bash
 docker exec -it ai-document-chat-ollama ollama pull qwen2.5:1.5b
+```
 
 Verify the installation:
+
+```bash
 docker exec -it ai-document-chat-ollama ollama list
+```
 
 You should see:
-qwen2.5:1.5b
 
-🧪 Test the AI Model
+```text
+qwen2.5:1.5b
+```
+
+---
+
+# 🧪 Test the AI Model
 
 You can test whether Ollama and the model are working correctly:
 
+```bash
 docker exec -it ai-document-chat-ollama ollama run qwen2.5:1.5b "Say hello"
+```
 
 Example response:
 
+```text
 Hello! How can I help you today?
+```
 
-💻 Run the Application
+---
 
-After the containers are running, open your browser and access the Streamlit application on port:
+# 💻 Using the Application
 
-8501
+After the containers are running, open:
 
-The application allows you to:
+```text
+http://localhost:8501
+```
 
-Upload a PDF.
-Wait for the PDF to be processed.
-Enter a question.
-Retrieve information from the PDF.
-Receive an AI-generated answer.
+Then:
 
-📸 Application Workflow
-1. Upload a PDF
+1. 📄 Upload a PDF document.
+2. ⏳ Wait for the document to be processed.
+3. 💬 Enter a question.
+4. 🔎 Relevant document content is retrieved.
+5. 🤖 Ollama generates an answer.
+6. ✅ The answer is displayed in the Streamlit interface.
 
-The user uploads a PDF document through the Streamlit interface.
+---
 
-2. Process the Document
+# 📸 Application Workflow
+
+### 1️⃣ Upload a PDF
+
+Upload a PDF document through the Streamlit interface.
+
+⬇️
+
+### 2️⃣ Process the Document
 
 The application extracts text from the PDF and prepares the document for searching and retrieval.
 
-3. Ask a Question
+⬇️
 
-The user enters a question related to the uploaded document.
+### 3️⃣ Ask a Question
 
-Example:
+For example:
 
+```text
 What is the patient's name?
-4. Retrieve Relevant Information
+```
+
+⬇️
+
+### 4️⃣ Retrieve Relevant Information
 
 The application searches the processed PDF for relevant information.
 
-5. Generate an Answer
+⬇️
 
-The retrieved information is sent to the local Ollama model.
+### 5️⃣ Generate an Answer
 
-6. Display the Answer
+The relevant document context is sent to the local Ollama model.
 
-The answer is displayed in the Streamlit chat interface.
+⬇️
 
-🐳 Docker Containers
+### 6️⃣ Display the Answer
+
+The AI-generated answer is displayed in the Streamlit interface.
+
+---
+
+# 🐳 Docker Architecture
 
 The project uses two main containers.
 
-Application Container
+## 📦 Application Container
 
-Container name:
+**Container Name:**
 
+```text
 ai-document-chat-app
+```
 
-Responsibilities:
+### Responsibilities
 
-Run the Streamlit application.
-Handle PDF uploads.
-Process documents.
-Retrieve relevant information.
-Communicate with Ollama.
+- Run the Streamlit application
+- Handle PDF uploads
+- Process documents
+- Retrieve relevant information
+- Communicate with Ollama
 
-Ollama Container
+**Port:**
 
-Container name:
+```text
+8501
+```
 
+---
+
+## 🤖 Ollama Container
+
+**Container Name:**
+
+```text
 ai-document-chat-ollama
+```
 
-Responsibilities:
+### Responsibilities
 
-Run the Ollama server.
-Store downloaded AI models.
-Process prompts.
-Generate AI responses.
+- Run the Ollama server
+- Store downloaded AI models
+- Process prompts
+- Generate AI responses
 
-📦 Useful Docker Commands
-Check Running Containers
+**Port:**
+
+```text
+11434
+```
+
+---
+
+# 📦 Useful Docker Commands
+
+<details>
+<summary><b>Check Running Containers</b></summary>
+
+```bash
 docker ps
-Check Ollama Models
+```
+
+</details>
+
+<details>
+<summary><b>Check Available Ollama Models</b></summary>
+
+```bash
 docker exec -it ai-document-chat-ollama ollama list
-View Application Logs
+```
+
+</details>
+
+<details>
+<summary><b>View Application Logs</b></summary>
+
+```bash
 docker compose logs
+```
 
 For live logs:
 
+```bash
 docker compose logs -f
-Stop the Application
+```
 
-Press:
+</details>
 
-CTRL + C
+<details>
+<summary><b>Stop the Application</b></summary>
 
-Or run:
-
+```bash
 docker compose down
-Start the Application Again
+```
+
+</details>
+
+<details>
+<summary><b>Start the Application Again</b></summary>
+
+```bash
 docker compose up
-Rebuild After Code Changes
+```
 
-If you make changes to the Python code or Docker configuration:
+</details>
 
+<details>
+<summary><b>Rebuild After Code Changes</b></summary>
+
+```bash
 docker compose up --build
+```
 
-🔮 Future Improvements
+</details>
 
-Possible improvements for the project include:
+---
 
-Support multiple PDF uploads.
-Add document history.
-Add chat history.
-Improve document chunking.
-Add vector database support.
-Add support for DOCX files.
-Add support for image-based PDFs.
-Improve OCR functionality.
-Add source citations for answers.
-Deploy the application publicly.
-Add authentication and user accounts.
-🔐 Local AI
+# 🔐 Local AI
 
 This project uses a locally running Ollama model.
 
-Advantages include:
+### Advantages
 
-No external AI API key required.
-AI processing can run locally.
-Reduced dependency on cloud AI services.
-Greater control over the AI model and environment.
-👩‍💻 Author
+- 🔑 No external AI API key required
+- 💻 AI processing can run locally
+- ☁️ Reduced dependency on cloud AI services
+- 🎛️ Greater control over the AI model and environment
 
-Ankita Priyadarshini
+---
 
-AI Document Chat is a local AI-powered document question-answering project built using Python, Streamlit, Docker, Ollama, and the Qwen language model.
+# 🔮 Future Improvements
 
-⭐ Project Status
+Potential improvements include:
 
-🚧 Active / Working Locally
+- 📚 Support multiple PDF uploads
+- 💬 Add chat history
+- 📂 Add document history
+- 🔎 Improve document chunking
+- 🗄️ Add vector database support
+- 📄 Support DOCX files
+- 🖼️ Improve support for image-based PDFs
+- 🔤 Improve OCR functionality
+- 📍 Add source citations for answers
+- 🌐 Deploy the application publicly
+- 🔐 Add authentication and user accounts
 
-The application has been successfully tested locally with:
+---
 
-Docker
-Docker Compose
-Ollama
-Qwen 2.5 1.5B
-PDF Upload
-Document Processing
-Question Answering
-Streamlit
+# ⭐ Project Status
 
+> 🟢 **Active — Successfully Running Locally**
 
+The application has been tested locally with:
+
+- ✅ Docker
+- ✅ Docker Compose
+- ✅ Ollama
+- ✅ Qwen 2.5 1.5B
+- ✅ PDF Upload
+- ✅ Document Processing
+- ✅ OCR Support
+- ✅ Retrieval-Based Question Answering
+- ✅ Streamlit
+
+---
+
+<div align="center">
+
+## 👩‍💻 Author
+
+### Ankita Priyadarshini
+
+Built using **Python · Streamlit · RAG · Ollama · Qwen · Docker**
+
+⭐ If you found this project interesting, consider giving it a star!
+
+</div>
